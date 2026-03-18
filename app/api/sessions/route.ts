@@ -1,0 +1,1 @@
+// GET for all sessions, POST for create session

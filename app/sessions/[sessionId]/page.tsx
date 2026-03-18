@@ -1,0 +1,1 @@
+// match details page for a single session
