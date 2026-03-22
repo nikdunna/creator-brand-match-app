@@ -10,13 +10,13 @@ datasource db {
 }
 
 model Session {
-  id             String         @id @default(cuid())
-  companyName    String
-  industry       String
-  targetAudience String
+  id              String         @id @default(cuid())
+  companyName     String
+  industry        String
+  targetAudience  String
   creatorCriteria String
-  createdAt      DateTime       @default(now())
-  matches        CreatorMatch[]
+  createdAt       DateTime       @default(now())
+  matches         CreatorMatch[]
 }
 
 model CreatorMatch {
