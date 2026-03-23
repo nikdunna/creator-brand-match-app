@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { generateCreatorMatches } from "@/lib/ai/generate-matches";
 import { prisma } from "@/lib/prisma/prisma";
 import { createSessionSchema } from "@/lib/validation/session";
+import { getAvatarUrl } from "@/lib/avatar";
 
 export const dynamic = "force-dynamic";
 
@@ -67,6 +68,7 @@ export async function POST(request: Request) {
             audienceSize: c.audienceSize,
             oneLiner: c.oneLiner,
             matchReason: c.matchReason,
+            avatarUrl: getAvatarUrl(c.name),
           })),
         },
       },

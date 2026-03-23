@@ -26,7 +26,7 @@ export default async function SessionDetailPage({ params }: PageProps) {
   });
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-6 py-10">
       <div className="flex items-center justify-between">
         <Link
           href="/dashboard"
@@ -69,7 +69,7 @@ export default async function SessionDetailPage({ params }: PageProps) {
             {session.matches.length !== 1 && "s"}
           </span>
         </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid gap-4 grid-cols-1 ">
           {session.matches.map((m) => (
             <CreatorCard
               key={m.id}
@@ -78,6 +78,7 @@ export default async function SessionDetailPage({ params }: PageProps) {
               audienceSize={m.audienceSize}
               oneLiner={m.oneLiner}
               matchReason={m.matchReason}
+              avatarUrl={m.avatarUrl}
             />
           ))}
         </div>
