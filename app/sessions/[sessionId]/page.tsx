@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma/prisma";
@@ -7,6 +8,21 @@ import { ArrowLeft, Building2, Target, Search } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ sessionId: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { sessionId } = await params;
+  const session = await prisma.session.findUnique({
+    where: { id: sessionId },
+    select: { companyName: true },
+  });
+
+  return {
+    title: session ? `${session.companyName} | Andy` : "Session Not Found | Andy",
+    description: session
+      ? `Creator match results for ${session.companyName}.`
+      : "This session could not be found.",
+  };
 }
 
 export default async function SessionDetailPage({ params }: PageProps) {

@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { SessionForm } from "@/components/session-form";
+
+export const metadata: Metadata = {
+  title: "New Match | Lil' Andy",
+  description: "Tell Andy about your startup to find the perfect creator partners.",
+};
 
 export default function NewSessionPage() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma/prisma";
@@ -6,10 +7,24 @@ import { EmptyState } from "@/components/empty-state";
 import { SortToggle } from "@/components/sort-toggle";
 import { Plus } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Your Sessions | Lil' Andy",
+  description: "View and manage your creator match sessions.",
+};
+
 export const dynamic = "force-dynamic";
 
 interface DashboardPageProps {
   searchParams: Promise<{ sort?: string }>;
+}
+
+function SortToggleSkeleton() {
+  return (
+    <div className="inline-flex rounded-lg border border-border-muted bg-surface p-0.5">
+      <div className="rounded-md px-4 py-2 text-sm font-medium text-transparent">Latest</div>
+      <div className="rounded-md px-4 py-2 text-sm font-medium text-transparent">Oldest</div>
+    </div>
+  );
 }
 
 export default async function DashboardPage({ searchParams }: DashboardPageProps) {
@@ -47,7 +62,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
 
       {sessions.length > 0 && (
         <div className="mt-6">
-          <Suspense>
+          <Suspense fallback={<SortToggleSkeleton />}>
             <SortToggle />
           </Suspense>
         </div>
