@@ -31,6 +31,7 @@ export function SessionCard({
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 
   function openConfirm(e: React.MouseEvent) {
