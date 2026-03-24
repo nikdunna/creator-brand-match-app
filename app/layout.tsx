@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Find the perfect creator partners for your startup with AI-powered matching.",
   icons: {
     icon: "/icon.png",
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
 };
