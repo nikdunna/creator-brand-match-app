@@ -39,6 +39,7 @@ export default async function SessionDetailPage({ params }: PageProps) {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 
   return (
