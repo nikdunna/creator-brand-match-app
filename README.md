@@ -2,7 +2,7 @@
 
 A lightweight version of OWM.ai's AI-powered creator matching experience, Andy. Founders describe their startup and _Lil'_ Andy suggests 3 to 5 fictional but realistic creator partners who would be a strong fit.
 
-**[Live Demo →](https://YOUR_VERCEL_URL_HERE.vercel.app)**
+**[Live Demo →](https://creator-brand-match-app.vercel.app/)**
 
 **[Loom Walkthrough → (TODO)](https://www.loom.com/)**
 
