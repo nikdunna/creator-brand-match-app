@@ -15,7 +15,7 @@ export function LoadingSpinner({
         <div className="palm"></div>		
         <div className="thumb"></div>
       </div>
-      <p className="text-lg font-medium text-text-secondary">{message}</p>
+      <p className="text-lg text-text-secondary text-center">{message}</p>
     </div>
   );
 }
