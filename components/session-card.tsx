@@ -67,38 +67,42 @@ export function SessionCard({
 
   return (
     <>
-      <Link
-        href={`/sessions/${id}`}
-        className="group flex items-center justify-between border border-border bg-surface hover:bg-surface-hover px-5 py-4 transition-all hover:shadow-sm"
-      >
-        <div className="min-w-0 space-y-1">
-          <p className="truncate text-lg font-medium text-text-primary">
-            {companyName}
-          </p>
-          <div className="flex items-center gap-3 text-sm text-text-secondary">
-            <span>{industry}</span>
-            <span className="text-text-muted">·</span>
-            <span>{formattedDate}</span>
-            <span className="text-text-muted">·</span>
-            <span className="inline-flex items-center gap-1">
-              <Users className="h-3 w-3 text-text-secondary" />
-              {matchCount} match{matchCount !== 1 && "es"}
-            </span>
+      <div className="group relative border border-border bg-surface hover:bg-surface-hover transition-all hover:shadow-sm">
+        <Link
+          href={`/sessions/${id}`}
+          className="flex items-center justify-between px-5 py-4"
+        >
+          <div className="min-w-0 space-y-1">
+            <h2 className="truncate text-lg font-medium text-text-primary">
+              {companyName}
+            </h2>
+            <div className="flex items-center gap-3 text-sm text-text-secondary">
+              <span>{industry}</span>
+              <span className="text-text-muted">•</span>
+              <span>{formattedDate}</span>
+              <span className="text-text-muted">•</span>
+              <span className="inline-flex items-center gap-1">
+                <Users className="h-3 w-3 text-text-secondary" />
+                {matchCount} match{matchCount !== 1 && "es"}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex shrink-0 items-center gap-2 pl-4">
-          <button
-            onClick={openConfirm}
-            disabled={deleting}
-            className="rounded-md p-1.5 text-text-secondary transition-colors hover:bg-error/10 hover:text-error disabled:opacity-50 hover:cursor-pointer"
-            aria-label="Delete session"
-          >
-            <Trash2 className="h-4 w-4 text-text-secondary" />
-          </button>
-          <ArrowRight className="h-4 w-4 text-text-secondary transition-colors group-hover:text-text-primary" />
-        </div>
-      </Link>
+          <div className="flex shrink-0 items-center gap-2 pl-4">
+            <div className="h-7 w-7" aria-hidden /> {/* placeholder for the delete button */}
+            <ArrowRight className="h-4 w-4 text-text-secondary transition-colors group-hover:text-text-primary" />
+          </div>
+        </Link>
+
+        <button
+          onClick={openConfirm}
+          disabled={deleting}
+          className="absolute right-14 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-text-secondary transition-colors hover:bg-error/10 hover:text-error hover:border-error border border-transparent disabled:opacity-50 hover:cursor-pointer"
+          aria-label="Delete session"
+        >
+          <Trash2 className="h-4 w-4" />
+        </button>
+      </div>
 
       <ConfirmModal
         open={confirmOpen}

@@ -40,7 +40,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     <main className="mx-auto max-w-5xl px-6 py-10">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-text-primary">
+          <h1 className="text-3xl font-semibold tracking-tight text-text-primary">
             Your Sessions
           </h1>
           <p className="mt-1 text-sm text-text-secondary">
