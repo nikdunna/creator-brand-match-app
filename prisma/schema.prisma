@@ -24,6 +24,8 @@ model CreatorMatch {
   sessionId    String
   session      Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   name         String
+  platform     String
+  handle       String
   niche        String
   audienceSize String
   oneLiner     String

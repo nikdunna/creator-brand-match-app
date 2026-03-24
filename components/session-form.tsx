@@ -82,7 +82,7 @@ export function SessionForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {serverError && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-error bg-error/10 px-4 py-3 text-sm text-error">
           {serverError}
         </div>
       )}
@@ -93,7 +93,7 @@ export function SessionForm() {
         value={form.companyName}
         onChange={handleChange}
         error={errors.companyName}
-        placeholder="Yummy Chicken Fingers Inc."
+        placeholder="What&apos;s your company called? (e.g. Crisp & Crave)"
       />
       <Field
         label="Industry"
@@ -101,7 +101,7 @@ export function SessionForm() {
         value={form.industry}
         onChange={handleChange}
         error={errors.industry}
-        placeholder="Restaurant / Food Service"
+        placeholder="What space are you in? (e.g. fintech, wellness, AI tools)"
       />
       <Field
         label="Target Audience"
@@ -109,7 +109,7 @@ export function SessionForm() {
         value={form.targetAudience}
         onChange={handleChange}
         error={errors.targetAudience}
-        placeholder="Foodies, chicken finger lovers, adventurous eaters…"
+        placeholder="Who are you trying to reach? (e.g. College students who love trying new food spots and sharing on TikTok)"
         multiline
       />
       <Field
@@ -118,15 +118,15 @@ export function SessionForm() {
         value={form.creatorCriteria}
         onChange={handleChange}
         error={errors.creatorCriteria}
-        placeholder="Has a large food network and high influence for people to try new dishes…"
+        placeholder="What kind of creator would be a great fit? (e.g. TikTok food reviewers who drive foot traffic and try new spots)"
         multiline
       />
 
       <button
         type="submit"
-        className="w-full rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-teal-700"
+        className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover hover:cursor-pointer"
       >
-        Find Creator Matches
+        Find Creator Partners
       </button>
     </form>
   );
@@ -152,12 +152,12 @@ function Field({
   multiline?: boolean;
 }) {
   const shared =
-    "w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500/40 focus:border-teal-500" +
-    (error ? " border-red-300" : " border-gray-200");
+    "w-full rounded-lg border bg-surface px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary" +
+    (error ? " border-error" : " border-border");
 
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+      <label htmlFor={name} className="block text-sm font-medium text-text-primary">
         {label}
       </label>
       {multiline ? (
@@ -180,7 +180,7 @@ function Field({
           className={shared}
         />
       )}
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      {error && <p className="text-xs text-error">{error}</p>}
     </div>
   );
 }

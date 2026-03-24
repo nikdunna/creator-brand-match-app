@@ -3,30 +3,31 @@ import { generateCreatorMatches } from "@/lib/ai/generate-matches";
 import { prisma } from "@/lib/prisma/prisma";
 import { createSessionSchema } from "@/lib/validation/session";
 import { getAvatarUrl } from "@/lib/avatar";
+import { jsonError } from "@/lib/api/utils";
 
 export const dynamic = "force-dynamic";
 
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ error: message }, { status });
-}
-
 export async function GET() {
-  const rows = await prisma.session.findMany({
-    orderBy: { createdAt: "desc" },
-    include: {
-      _count: { select: { matches: true } },
-    },
-  });
+  try {
+    const rows = await prisma.session.findMany({
+      orderBy: { createdAt: "desc" },
+      include: {
+        _count: { select: { matches: true } },
+      },
+    });
 
-  const sessions = rows.map(
-    ({ _count, ...session }: (typeof rows)[number]) => ({
-      ...session,
-      createdAt: session.createdAt.toISOString(),
-      matchCount: _count.matches,
-    }),
-  );
+    const sessions = rows.map(
+      ({ _count, ...session }: (typeof rows)[number]) => ({
+        ...session,
+        createdAt: session.createdAt.toISOString(),
+        matchCount: _count.matches,
+      }),
+    );
 
-  return NextResponse.json({ sessions });
+    return NextResponse.json({ sessions });
+  } catch {
+    return jsonError("Failed to load sessions", 500);
+  }
 }
 
 export async function POST(request: Request) {
@@ -64,6 +65,8 @@ export async function POST(request: Request) {
         matches: {
           create: aiResponse.creators.map((c) => ({
             name: c.name,
+            platform: c.platform,
+            handle: c.handle,
             niche: c.niche,
             audienceSize: c.audienceSize,
             oneLiner: c.oneLiner,

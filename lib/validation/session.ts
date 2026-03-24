@@ -1,16 +1,18 @@
 import { z } from "zod";
 
 export const createSessionSchema = z.object({
-  companyName: z.string().min(1, "Company name is required"),
-  industry: z.string().min(1, "Industry is required"),
-  targetAudience: z.string().min(1, "Target audience is required"),
-  creatorCriteria: z.string().min(1, "Creator criteria is required"),
+  companyName: z.string().trim().min(1, "Company name is required"),
+  industry: z.string().trim().min(1, "Industry is required"),
+  targetAudience: z.string().trim().min(1, "Target audience is required"),
+  creatorCriteria: z.string().trim().min(1, "Creator criteria is required"),
 });
 
 export type CreateSessionInput = z.infer<typeof createSessionSchema>;
 
 export const creatorMatchSchema = z.object({
   name: z.string(),
+  platform: z.string(),
+  handle: z.string(),
   niche: z.string(),
   audienceSize: z.string(),
   oneLiner: z.string(),
