@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   title: "Andy — AI Creator Matchmaker",
   description:
     "Find the perfect creator partners for your startup with AI-powered matching.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
