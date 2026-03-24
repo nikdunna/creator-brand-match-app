@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { ConfirmModal } from "@/components/confirm-modal";
@@ -10,11 +10,13 @@ export function DeleteSessionButton({ sessionId }: { sessionId: string }) {
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const inflight = useRef(false);
 
   const closeConfirm = useCallback(() => setConfirmOpen(false), []);
 
   const handleDelete = useCallback(async () => {
-    if (deleting) return;
+    if (inflight.current) return;
+    inflight.current = true;
     setDeleting(true);
     setError(null);
 
@@ -29,13 +31,15 @@ export function DeleteSessionButton({ sessionId }: { sessionId: string }) {
       } else {
         const data = await res.json().catch(() => null);
         setError(data?.error ?? "Failed to delete session. Please try again.");
+        inflight.current = false;
         setDeleting(false);
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
+      inflight.current = false;
       setDeleting(false);
     }
-  }, [deleting, sessionId, router]);
+  }, [sessionId, router]);
 
   return (
     <>

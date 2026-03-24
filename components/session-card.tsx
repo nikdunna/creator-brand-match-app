@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Trash2, Users, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { ConfirmModal } from "@/components/confirm-modal";
 
 interface SessionCardProps {
@@ -25,6 +25,7 @@ export function SessionCard({
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const inflight = useRef(false);
 
   const formattedDate = new Date(createdAt).toLocaleDateString("en-US", {
     month: "short",
@@ -41,7 +42,8 @@ export function SessionCard({
   const closeConfirm = useCallback(() => setConfirmOpen(false), []);
 
   const handleDelete = useCallback(async () => {
-    if (deleting) return;
+    if (inflight.current) return;
+    inflight.current = true;
     setDeleting(true);
     setError(null);
 
@@ -53,13 +55,15 @@ export function SessionCard({
       } else {
         const data = await res.json().catch(() => null);
         setError(data?.error ?? "Failed to delete session. Please try again.");
+        inflight.current = false;
         setDeleting(false);
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
+      inflight.current = false;
       setDeleting(false);
     }
-  }, [deleting, id, router]);
+  }, [id, router]);
 
   return (
     <>
