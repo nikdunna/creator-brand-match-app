@@ -126,7 +126,7 @@ export function SessionForm() {
         type="submit"
         className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover hover:cursor-pointer"
       >
-        Generate Matches
+        Find Creator Partners
       </button>
     </form>
   );

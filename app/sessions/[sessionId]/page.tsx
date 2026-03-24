@@ -79,6 +79,8 @@ export default async function SessionDetailPage({ params }: PageProps) {
               oneLiner={m.oneLiner}
               matchReason={m.matchReason}
               avatarUrl={m.avatarUrl}
+              platform={m.platform}
+              handle={m.handle}
             />
           ))}
         </div>

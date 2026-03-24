@@ -64,6 +64,8 @@ export async function POST(request: Request) {
         matches: {
           create: aiResponse.creators.map((c) => ({
             name: c.name,
+            platform: c.platform,
+            handle: c.handle,
             niche: c.niche,
             audienceSize: c.audienceSize,
             oneLiner: c.oneLiner,

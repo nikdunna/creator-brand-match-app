@@ -11,6 +11,8 @@ interface CreatorCardProps {
   oneLiner: string;
   matchReason: string;
   avatarUrl: string;
+  platform: string;
+  handle: string;
 }
 
 export function CreatorCard({
@@ -19,7 +21,9 @@ export function CreatorCard({
   audienceSize,
   oneLiner,
   matchReason,
-  avatarUrl
+  avatarUrl,
+  platform,
+  handle
 }: CreatorCardProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -40,6 +44,11 @@ export function CreatorCard({
               <h2 className="truncate text-lg font-medium text-text-primary">
                 {name}
               </h2>
+              <div className="mt-0.5 flex items-center gap-2">
+                <span className="text-sm text-accent">@{handle.replace(/^@/, "")}</span>
+                <span className="text-text-muted text-xs">•</span>
+                <span className="text-sm text-text-secondary">{platform}</span>
+              </div>
               <p className="mt-0.5 text-sm text-text-secondary">{niche}</p>
             </div>
           </div>

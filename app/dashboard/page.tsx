@@ -30,7 +30,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
           </h1>
           <p className="mt-1 text-sm text-text-secondary">
             {sessions.length === 0
-              ? "No matches yet — let Andy find your first creators."
+              ? "No matches yet, let Lil' Andy search for your first creator partners."
               : `${sessions.length} session${sessions.length !== 1 ? "s" : ""} so far`}
           </p>
         </div>

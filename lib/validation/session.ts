@@ -11,6 +11,8 @@ export type CreateSessionInput = z.infer<typeof createSessionSchema>;
 
 export const creatorMatchSchema = z.object({
   name: z.string(),
+  platform: z.string(),
+  handle: z.string(),
   niche: z.string(),
   audienceSize: z.string(),
   oneLiner: z.string(),
