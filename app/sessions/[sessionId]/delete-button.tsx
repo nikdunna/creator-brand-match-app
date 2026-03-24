@@ -9,21 +9,30 @@ export function DeleteSessionButton({ sessionId }: { sessionId: string }) {
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const closeConfirm = useCallback(() => setConfirmOpen(false), []);
 
   const handleDelete = useCallback(async () => {
     if (deleting) return;
     setDeleting(true);
+    setError(null);
 
-    const res = await fetch(`/api/sessions/${sessionId}`, {
-      method: "DELETE",
-    });
+    try {
+      const res = await fetch(`/api/sessions/${sessionId}`, {
+        method: "DELETE",
+      });
 
-    if (res.ok) {
-      setConfirmOpen(false);
-      router.push("/dashboard");
-    } else {
+      if (res.ok) {
+        setConfirmOpen(false);
+        router.push("/dashboard");
+      } else {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? "Failed to delete session. Please try again.");
+        setDeleting(false);
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
       setDeleting(false);
     }
   }, [deleting, sessionId, router]);
@@ -46,6 +55,7 @@ export function DeleteSessionButton({ sessionId }: { sessionId: string }) {
         onConfirm={handleDelete}
         onCancel={closeConfirm}
         loading={deleting}
+        error={error}
       />
     </>
   );

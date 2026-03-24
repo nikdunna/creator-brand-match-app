@@ -9,6 +9,7 @@ interface ConfirmModalProps {
   confirmLabel?: string;
   cancelLabel?: string;
   loading?: boolean;
+  error?: string | null;
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -20,6 +21,7 @@ export function ConfirmModal({
   confirmLabel = "Delete",
   cancelLabel = "Cancel",
   loading = false,
+  error,
   onConfirm,
   onCancel,
 }: ConfirmModalProps) {
@@ -66,6 +68,12 @@ export function ConfirmModal({
         <p id="confirm-desc" className="mt-2 text-sm text-text-secondary">
           {description}
         </p>
+
+        {error && (
+          <p className="mt-3 rounded-lg bg-error/10 px-3 py-2 text-sm text-error">
+            {error}
+          </p>
+        )}
 
         <div className="mt-6 flex items-center justify-end gap-3">
           <button

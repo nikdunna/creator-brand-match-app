@@ -24,6 +24,7 @@ export function SessionCard({
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const formattedDate = new Date(createdAt).toLocaleDateString("en-US", {
     month: "short",
@@ -42,11 +43,20 @@ export function SessionCard({
   const handleDelete = useCallback(async () => {
     if (deleting) return;
     setDeleting(true);
-    const res = await fetch(`/api/sessions/${id}`, { method: "DELETE" });
-    if (res.ok) {
-      setConfirmOpen(false);
-      router.refresh();
-    } else {
+    setError(null);
+
+    try {
+      const res = await fetch(`/api/sessions/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        setConfirmOpen(false);
+        router.refresh();
+      } else {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? "Failed to delete session. Please try again.");
+        setDeleting(false);
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
       setDeleting(false);
     }
   }, [deleting, id, router]);
@@ -93,6 +103,7 @@ export function SessionCard({
         onConfirm={handleDelete}
         onCancel={closeConfirm}
         loading={deleting}
+        error={error}
       />
     </>
   );
