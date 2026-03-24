@@ -76,7 +76,7 @@ export function SessionForm() {
   }
 
   if (submitting) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner message="Lil' Andy is searching for the perfect creator partners..."/>;
   }
 
   return (

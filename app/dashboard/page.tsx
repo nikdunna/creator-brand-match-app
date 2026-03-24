@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "View and manage your creator match sessions.",
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // don't cache
 
 interface DashboardPageProps {
   searchParams: Promise<{ sort?: string }>;

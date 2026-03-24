@@ -65,31 +65,6 @@
   --color-error: var(--color-error);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #0f1110;
-    --color-foreground: #f3f5f2;
-
-    --color-surface: #171917;
-    --color-surface-hover: #1d201d;
-
-    --color-border: #2b2f2b;
-    --color-border-muted: #232623;
-
-    --color-text-primary: #f3f5f2;
-    --color-text-secondary: #c2c8bf;
-    --color-text-muted: #8b9288;
-
-    --color-primary: #7db39b;
-    --color-primary-hover: #6fa18b;
-    --color-primary-active: #628f7b;
-    --color-primary-muted: #1c2a24;
-
-    --color-success: #7db39b;
-    --color-error: #d17c7c;
-  }
-} */
-
 body {
   background: var(--color-background);
   color: var(--color-text-primary);
@@ -115,7 +90,7 @@ body {
 /* Loading "Spinner" */
 /* From Uiverse.io by Pradeepsaranbishnoi */
 .hand {
-  --skin-color: #e4c560;
+  --skin-color: #ffde21;
   --tap-speed: 0.6s;
   --tap-stagger: 0.1s;
   position: relative;
@@ -132,9 +107,9 @@ body {
   position: absolute;
   top: 70%;
   right: 20%;
-  background-color: black;
+  background-color: gray;
   border-radius: 40px 10px;
-  filter: blur(10px);
+  filter: blur(20px);
   opacity: 0.3;
 }
 
@@ -167,7 +142,7 @@ body {
   width: 20%;
   height: 60%;
   content: "";
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(190, 134, 123, 0.3);
   position: absolute;
   bottom: -8%;
   left: 5px;

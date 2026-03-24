@@ -5,7 +5,7 @@ import { createSessionSchema } from "@/lib/validation/session";
 import { getAvatarUrl } from "@/lib/avatar";
 import { jsonError } from "@/lib/api/utils";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // don't cache
 
 export async function GET() {
   try {

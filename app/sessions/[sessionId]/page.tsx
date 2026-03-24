@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 
   return {
-    title: session ? `${session.companyName} | Andy` : "Session Not Found | Andy",
+    title: session ? `${session.companyName} | Lil' Andy` : "Session Not Found | Lil' Andy",
     description: session
       ? `Creator match results for ${session.companyName}.`
       : "This session could not be found.",

@@ -20,7 +20,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         <AlertTriangle className="h-6 w-6 text-error" />
       </div>
       <h1 className="mt-4 text-xl font-semibold text-text-primary">
-        Something went wrong
+        Oops! An error occurred.
       </h1>
       <p className="mt-2 text-sm text-text-secondary">
         An unexpected error occurred. You can try again or head back to the
@@ -29,7 +29,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
       <div className="mt-6 flex items-center gap-3">
         <button
           onClick={reset}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-surface-hover hover:text-text-primary"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-surface-hover hover:text-text-primary hover:cursor-pointer"
         >
           <RotateCcw className="h-4 w-4" />
           Try again

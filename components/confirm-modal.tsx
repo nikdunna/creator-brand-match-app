@@ -54,7 +54,7 @@ export function ConfirmModal({
       }}
     >
       <div
-        className="w-full max-w-sm rounded-xl border border-border-muted bg-surface p-6 shadow-lg animate-in fade-in zoom-in-95"
+        className="w-full max-w-sm rounded-xl border border-border-muted bg-surface p-6 shadow-lg"
         role="alertdialog"
         aria-labelledby="confirm-title"
         aria-describedby="confirm-desc"

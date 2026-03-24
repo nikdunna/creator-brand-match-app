@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma/prisma";
 import { jsonError } from "@/lib/api/utils";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // don't cache
 
 interface RouteContext {
   params: Promise<{ sessionId: string }>;

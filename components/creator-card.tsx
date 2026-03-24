@@ -28,7 +28,15 @@ export function CreatorCard({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="flex flex-col border border-border bg-surface hover:bg-surface-hover transition-all hover:shadow-sm">
+    <div
+      className="flex flex-col border border-border bg-surface hover:bg-surface-hover transition-all hover:shadow-sm"
+      onClick={() => {
+        // if the user is selecting text, don't expand the card
+        const selection = window.getSelection();
+        if (selection && selection.toString().length > 0) return;
+        setExpanded((prev) => !prev);
+      }}
+    >
       <div className="space-y-3 p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex items-center gap-3">
@@ -61,7 +69,11 @@ export function CreatorCard({
 
       <div className="border-t border-border-muted">
         <button
-          onClick={() => setExpanded(!expanded)}
+          onClick={(e) => {
+            // prevent double expansion
+            e.stopPropagation();
+            setExpanded((prev) => !prev);
+          }}
           className="flex w-full items-center justify-between px-5 py-3 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
         >
           <span>Why this creator?</span>
