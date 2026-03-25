@@ -25,7 +25,7 @@ export function SessionCard({
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const inflight = useRef(false);
+  const inflight = useRef(false); // prevent multiple requests, ref is a synchronous change (as opposed to useState)
 
   const formattedDate = new Date(createdAt).toLocaleDateString("en-US", {
     month: "short",

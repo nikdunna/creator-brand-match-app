@@ -92,8 +92,6 @@ To keep output structured and reliable, the expected shape is defined in the sys
 
 I chose `gpt-4o-mini` for the balance of speed, cost, and output quality. The creative task here (generating fictional creator personas) doesn't require the reasoning depth of a full GPT-4o call, and the faster response time makes the UX feel snappier. Temperature is set to `0.8` to encourage variety across creator suggestions without sacrificing coherence.
 
-<!-- LOOM: walk through system-prompt.ts, mention the "refrain from" rules, the example output block, and how the prompt prevents repetitive suggestions -->
-
 ## Design Decisions
 
 My design goal was a clean, trustworthy interface that feels like a real tool while staying fresh and bright.
@@ -104,6 +102,8 @@ My design goal was a clean, trustworthy interface that feels like a real tool wh
 
 **Token system.** All colors are defined as CSS custom properties in `globals.css` and exposed to Tailwind via the `@theme` directive. This means every color in the app references a **single source of truth**, making it straightforward to adjust the palette or add dark mode without touching component files.
 
+**API consistency and extensibility.** While read operations in the current UI use direct Prisma access within Server Components for simplicity, I also defined GET endpoints for sessions. These make it easy to build out future use cases such as client-side fetching, external integrations, or a mobile client without needing to refactor the data layer. For session creation and generation, I use a call to the API route handler, separating the more complex workflow and validation.
+
 **AI output structure**. The system prompt is designed to prioritize specificity, differentiation, and commercial relevance over generic influencer suggestions. Each creator is generated with structured fields (platform, handle, niche, audience size, and reasoning) so the frontend can render consistent, trustworthy cards. The goal was to make the output feel like actionable recommendations rather than AI-generated filler.
 
 **Empty and error states**. The app avoids dead ends. Empty states guide the user toward creating their first match, while error states are explicit and actionable instead of generic failures. This ensures the experience remains usable even when something goes wrong.
@@ -113,8 +113,6 @@ My design goal was a clean, trustworthy interface that feels like a real tool wh
 **Creator cards.** Each card is designed to feel like a real profile: DiceBear avatar, platform handle, niche label, audience size badge, and a one-liner. The "Why this creator?" section is collapsed by default to keep the initial scan clean while letting founders drill into the reasoning on demand. Click on anywhere in the card to open.
 
 **Loading state.** Instead of a generic spinner, I used an animated hand-tapping illustration while Andy generates matches or other session states are loading. Shoutout to [Pradeep Saran](https://uiverse.io/Pradeepsaranbishnoi/tall-fish-38) for creating the cool CSS-only animation (open-sourced)
-
-<!-- LOOM: show the token system in globals.css, talk about spacing and hierarchy choices -->
 
 ## Trade-offs and Scope Decisions
 

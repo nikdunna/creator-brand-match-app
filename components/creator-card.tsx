@@ -85,7 +85,7 @@ export function CreatorCard({
         </button>
         {expanded && (
           <div className="px-5 pb-4">
-            <p className="text-sm leading-relaxed text-text-secondary">
+            <p className="text-base leading-relaxed text-text-secondary">
               {matchReason}
             </p>
           </div>

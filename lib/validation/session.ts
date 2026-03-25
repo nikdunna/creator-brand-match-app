@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const createSessionSchema = z.object({
-  companyName: z.string().trim().min(1, "Company name is required"),
-  industry: z.string().trim().min(1, "Industry is required"),
-  targetAudience: z.string().trim().min(1, "Target audience is required"),
-  creatorCriteria: z.string().trim().min(1, "Creator criteria is required"),
+  companyName: z.string().trim().min(1, "Company name is required").max(100, "Company name is too long"),
+  industry: z.string().trim().min(1, "Industry is required").max(100, "Industry is too long"),
+  targetAudience: z.string().trim().min(1, "Target audience is required").max(500, "Target audience is too long"),
+  creatorCriteria: z.string().trim().min(1, "Creator criteria is required").max(500, "Creator criteria is too long"),
 });
 
 export type CreateSessionInput = z.infer<typeof createSessionSchema>;

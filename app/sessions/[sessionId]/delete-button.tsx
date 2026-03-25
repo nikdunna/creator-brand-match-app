@@ -10,7 +10,7 @@ export function DeleteSessionButton({ sessionId }: { sessionId: string }) {
   const [deleting, setDeleting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const inflight = useRef(false);
+  const inflight = useRef(false); // prevent multiple requests, ref is a synchronous change (as opposed to useState)
 
   const closeConfirm = useCallback(() => setConfirmOpen(false), []);
 

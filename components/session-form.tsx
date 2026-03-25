@@ -101,7 +101,7 @@ export function SessionForm() {
         value={form.industry}
         onChange={handleChange}
         error={errors.industry}
-        placeholder="What space are you in? (e.g. fintech, wellness, AI tools)"
+        placeholder="What space are you in? (e.g. fintech, wellness, AI)"
       />
       <Field
         label="Target Audience"
