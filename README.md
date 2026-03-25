@@ -4,7 +4,7 @@ A lightweight version of OWM.ai's AI-powered creator matching experience, Andy. 
 
 **[Live Demo →](https://creator-brand-match-app.vercel.app/)**
 
-**[Loom Walkthrough → (TODO)](https://www.loom.com/)**
+**[YouTube Walkthrough](https://www.youtube.com/watch?v=lSx-IVzVj3M)**
 
 ## Overview
 
