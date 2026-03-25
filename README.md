@@ -37,18 +37,18 @@ I had a great time building this, especially when designing the calm and bright 
 
 ### Setup
 
-Clone the repository and install dependencies:
+Clone the repository and set up your environment:
 
 ```bash
 git clone https://github.com/nikdunna/creator-brand-match-app.git
 cd creator-brand-match-app
-npm install
+cp .env.example .env
 ```
 
-Copy the example environment file and fill in your values:
+Fill in your `.env` values (OpenAI key and Supabase connection strings), then install dependencies.
 
 ```bash
-cp .env.example .env
+npm install
 ```
 
 Run database migrations against your Supabase instance:
