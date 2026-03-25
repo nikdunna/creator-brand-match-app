@@ -2,13 +2,17 @@
 
 A lightweight version of OWM.ai's AI-powered creator matching experience, Andy. Founders describe their startup and _Lil'_ Andy suggests 3 to 5 fictional but realistic creator partners who would be a strong fit.
 
-**[Live Demo →](https://creator-brand-match-app.vercel.app/)**
+**[Live Deployed Demo →](https://creator-brand-match-app.vercel.app/)**
 
-**[YouTube Walkthrough](https://www.youtube.com/watch?v=lSx-IVzVj3M)**
+**[Loom Quick Demo →](https://www.loom.com/share/87ef5314622249e19fc8481342a9aaa3)**
+
+**[YouTube Deeper Technical Walkthrough →](https://www.youtube.com/watch?v=lSx-IVzVj3M)**
 
 ## Overview
 
-Founders often know they need creator partnerships but have no idea where to start looking. Lil' Andy closes that gap: you describe your company, audience, and what you're looking for, and Andy returns a shortlist of creator personas tailored to your brand. Each match comes with a specific rationale so you can immediately evaluate fit and take action. I had a great time building this, especially when designing the calm and bright UI/UX.
+Founders often know they need creator partnerships but have no idea where to start looking. Lil' Andy closes that gap: you describe your company, audience, and what you're looking for, and Lil' Andy returns a shortlist of creator personas tailored to your brand. Each match comes with a specific rationale so you can immediately evaluate fit and take action.
+
+I had a great time building this, especially when designing the calm and bright UI/UX.
 
 ## Tech Stack
 
